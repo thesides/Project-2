@@ -9,25 +9,24 @@ module.exports = function (sequelize, DataTypes) {
 		
 	});
 
-	//This creates a column linking the post to the author
+	
 	Post.associate = function (models) {
+
+		//This creates a column linking the post to the author
 		Post.belongsTo(models.User, {
 			foreignKey: {
 				allowNull: false
 			}
 		});
 
+
+		//This creates a column linking the post to the relevant story ID
 		Post.belongsTo(models.Story, {
 			foreignKey: {
 				allowNull: false
 			}
 		});
 	}
-
-	//This creates a column linking the post to the relevant story ID
-	// Post.associate = function (models) {
-		
-	// }
 
 	return Post;
 };

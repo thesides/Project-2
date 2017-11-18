@@ -12,7 +12,6 @@ module.exports = function (sequelize, DataTypes) {
 		User.hasMany(models.Story);
 	};
 
-		
 	return User;
 	
 };
