@@ -22,14 +22,28 @@
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo">4 People 1 Story</a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="sass.html"><i class="material-icons left">search</i>Search</a></li>
-          <li><a href="badges.html"><i class="material-icons right">face</i>Login</a></li>
+          <li><button data-target="modal" class="btn modal-trigger"><i class="material-icons right">face</i>Login</button></li>
         </ul>
       </div>
     </nav>
   </div>
 
   <!-- Login / Sign Up Modal -->
+  <div id="login-modal" class="modal">
+    <div class="modal-content">
+      <h1>Please login</h1>
+      <p>Text...</p>
+      <div class="input-field">
+            
+      </div>
+      <div id="user-confirm" class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">LOGIN</a>
+      <div id="user-confirm" class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">SIGN UP</a>
+      </div>        
+      </div>
+    </div>
+  </div>  
 
   <!-- Urban Dictionary API -->
   <div class="urban-dictionary-container">
@@ -57,9 +71,33 @@
 
         <!-- table of currently active stories -->
         <div class="row">
-          <div class="col s12 story-container">
-            
-          </div>
+<!--           <div class="col s12 current-story-container">
+            <h1>My Stories</h1>
+            <table class="table table-striped" id="story-table">
+              <thead>
+                <tr>
+                  <th>Story Name</th>
+                  <th>Timer</th>
+                  <th># People</th>
+                  <th>View Current Story</th>
+                  <th>New Post</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="form-row">
+                  <form id="user-form">
+                    <td colspan="4">
+                      <input placeholder="Enter a name" id="story-name" type="text"/>
+                    </td>                    
+                  </form>
+                </tr>
+                <tr id="buttons-row">
+                  <td class="col s6"><button type="submit" class="btn btn-success">Create A Story</button>
+                  </td>
+                </tr>   
+              </tbody>
+            </table>                    
+          </div> -->
         </div>  
         
         <!-- popular stories -->

@@ -41,7 +41,7 @@ app.get("/api/posts", function(req, res) {
 	});
 
 	//DELETE route for deleting posts
-	app.delete("/apy/posts/:id", function(req, res) {
+	app.delete("/api/posts/:id", function(req, res) {
 		db.Post.destroy({
 			where: {
 				id: req.params.id

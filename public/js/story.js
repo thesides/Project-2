@@ -45,6 +45,16 @@ $(document).ready(function() {
 	$(document).on("submit", "#user-form", userFormSubmit);
 	$(document).on("click", ".join-story", joinStory);
 
+	//Get stories for specific user
+	var url = window.location.search;
+	var userId;
+	if(url.indexOF("?user_id=") != -1) {
+		userId = url.split("=") [1];
+		getStories(userId);
+	} else {
+		renderEmpty();
+	};
+
 	
 	//Invoke function to get initial list of stories for user
 	getStories(); 
@@ -81,8 +91,12 @@ $(document).ready(function() {
 	};
 
   	// Function to grab stories from database
-	function getStories() {
-	    $.get("/api/stories" function(data) {
+	function getStories(user) {
+		userId = user || "";
+		if (userId) {
+			userId = "/?user_id" + userId;
+		}		
+	    $.get("/api/stories" + userId, function(data) {
 	      console.log("Stories", data);
 	      var rowsToAddArray = [];
 	      data.forEach(function() {
@@ -104,7 +118,7 @@ $(document).ready(function() {
 		}
 	};
 
-	// Function to display messgae if no stories in database
+	// Function to display message if no stories in database
 	function renderEmpty() {
 		var emptyDiv = $("<div>");
 		emptyDiv.addClass("alert alert-danger");
