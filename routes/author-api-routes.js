@@ -2,7 +2,7 @@ var db = require("../models");
 
 module.exports = function(app) {
 
-	app.get("/api/authors", function(req, res) {
+	app.get("/api/stories", function(req, res) {
 
 		db.Author.findAll({
 			include: [db.Post]
@@ -12,7 +12,7 @@ module.exports = function(app) {
 
 	});
 
-	app.get("/api/authors/:id", function(req, res) {
+	app.get("/api/stories/:id", function(req, res) {
 
 		db.Author.findOne({
 			where: {
@@ -25,7 +25,7 @@ module.exports = function(app) {
 
 	});
 
-	app.post("/api/authors", function(req, res) {
+	app.post("/api/stories", function(req, res) {
 
 		db.Author.create(req.body).then(function(dbAuthor) {
 			res.json(dbAuthor);
@@ -33,7 +33,7 @@ module.exports = function(app) {
 
 	});
 
-	app.delete("api/authors/:id", function(req, res) {
+	app.delete("api/stories/:id", function(req, res) {
 
 		db.Author.destroy({
 			where: {
