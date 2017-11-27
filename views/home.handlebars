@@ -1,0 +1,26 @@
+<h1>Login to Begin!</h1>
+
+<h2>Add an Author</h2>
+<form class="create-form" action="/api/authors" method="POST">
+
+  <div class="form-group">
+    <label for="author">Name:</label>
+    <input type="text" id="newAuthor" name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input type="text" id="newPassword" name="password">
+  </div>
+
+
+  <button type="submit" id="addAuthor">Add Author</button>
+
+
+</form>
+
+<!--button to bypass user name input and go straight to creating a story-->
+<button type="submit" id="createStory"><a href="story">Create Story<a></button>
+
+
+<script src="/assets/js/login.js"></script>

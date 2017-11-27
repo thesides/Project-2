@@ -12,9 +12,16 @@ module.exports = function (sequelize, DataTypes) {
 
 	//associating stories with all the posts in the story
 	Story.associate = function (models) {
-		Story.hasMany(models.Post)
+		
+		Story.hasMany(models.Post, {
+			onDelete: "cascade"
+		});
 
-		Story.belongsTo(models.User)
+		// Story.belongsTo(models.User, {
+		// 	foreignKey: {
+		// 		allowNull: false
+		// 	}
+		// });
 	};
 	
 	return Story;
