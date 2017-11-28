@@ -1,42 +1,64 @@
+var storyId;
+
 $(function(){
 
-	//Add a new story thread
+	//Add a new story thread when user clicks create story button
 	$("#createStory").on("click", function (event) {
 
 		event.preventDefault();
 
-		console.log("BLAHAHHAHA");
 		//new story title ask
 		var newStory = {
-			storyName: $("#newTitle").val().trim()
+			storyName: $("#newTitle").val().trim(),
 		}
-		
 
+		//first post body text ask
+		var postBody = $("#firstPost").val().trim()
+		
 		//sends new story title to Story Table in DB; this title gets a Story ID
 		$.ajax("/api/story", {
 			type: "POST",
 			data: newStory
 		}).done(function(data){
 			
-			console.log("new story created");
-			window.location.href = "/post";
+			console.log(data);
+			
+			//grab the story id so it can be sent to the post table with the body of the first post
+			storyId = data.id
+			
+			//post request includes body of post and StoryId the post goes with
+			var newPost = {
+				body: postBody,
+				StoryId: storyId
+			}
+
+			console.log(newPost);
+
+			//ajax post request gets sent out along the /api/post route
+			$.ajax("/api/post", {
+				type: "POST",
+				data: newPost
+			}).then(function(data){
+				console.log(data)
+
+				//reload the create story page when done
+				window.location.href = "/post";
+				//export the storyID so it can be accessed in the post.js file
+				module.exports.storyId = storyId;
+			});
 		});
-
-		// //sends the initial post to the Posts Table in DB; should automatically take the id auto assigned to the story above and associate that with the post		
-		// var newPost = {
-		// 	body: $("#firstPost").val().trim()
-		// }
-		// console.log(newPost);
-
-		// $.ajax("/api/story", {
-		// 	type: "POST",
-		// 	data: newPost
-		// }).then(function(data){
-		// 	console.log(data)
-		// });
-
 	});
 
+	//ajax get request to retrieve all stories and their posts
+	$("#getStories").on("click", function (event) {
+		$.get("/api/story", function (data){
 
+			//render results to page
+			console.log(data);
+
+		});
+	});
 
 });
+
+

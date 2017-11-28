@@ -1,26 +1,35 @@
+
+
+var newPost = function (body, StoryId) {
+	this.body = body;
+	this.StoryId = StoryId;
+};
+
 $(function(){
+
+	var storyId = require("./story.js");
 
 	$("#createPost").on("click", function (event){
 
 		event.preventDefault();
-		//sends the initial post to the Posts Table in DB; should automatically take the id auto assigned to the story above and associate that with the post		
 		
-		var newPost = {
-			body: $("#firstPost").val().trim()
-		}
-		
-		console.log(newPost);
+		$("#createPost").on("click", function (event) {
 
-		$.ajax("/api/post", {
-			type: "POST",
-			data: newPost
-		}).done(function(data){
-			
-			window.location.href = "/home";
+			var postBody = $("#newPost").val().trim();
+			var story = storyId.storyId;
+
+			var newPost = new newPost (postBody, story);
+
+			$.ajax("/api/post", {
+				type: "POST",
+				data: newPost
+			}).done(function (data) {
+
+			//call get all posts
+			console.log(data);
+			window.location.href = "/post";
+			});
 		});
+
 	});
-
-
-
-
 });

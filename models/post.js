@@ -25,7 +25,7 @@ module.exports = function (sequelize, DataTypes) {
 		//This creates a column linking the post to the relevant story ID
 		Post.belongsTo(models.Story, {
 			foreignKey: {
-				//allowNull: false
+				allowNull: false
 			}
 		});
 
