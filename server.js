@@ -1,6 +1,6 @@
 var express = require("express")
 var bodyParser = require("body-parser")
-
+var exphbs = require("express-handlebars");
 var app = express();
 var PORT = process.env.PORT || 8080;
 
@@ -11,18 +11,31 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-// Static directory
-app.use(express.static("public"));
 
-// Set Handlebars.
-var exphbs = require("express-handlebars");
-
+// Set Handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Routes
 // =============================================================
+app.get("/", function(req, res) {
+    res.render("home");
+});
 
+app.get("/home", function(req, res) {
+    res.render("loggedInUserView");
+});
+
+app.get("/crm", function(req, res) {
+    res.render("crm");
+});
+
+// Static directory
+app.use(express.static("public"));
+
+require("./routes/api-routes.js")(app);
+require("./routes/story-routes.js")(app);
+require("./routes/post-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
