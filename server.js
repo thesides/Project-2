@@ -5,6 +5,13 @@ var exphbs = require("express-handlebars")
 var app = express();
 var PORT = process.env.PORT || 8080;
 
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
+app.get('/', function (req, res) {
+    res.render('home');
+});
+
 var db = require("./models");
 
 app.use(bodyParser.json());
