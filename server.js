@@ -26,8 +26,8 @@ app.get("/home", function(req, res) {
     res.render("loggedInUserView");
 });
 
-app.get("/crm", function(req, res) {
-    res.render("crm");
+app.get("/cms", function(req, res) {
+    res.render("cms");
 });
 
 // Static directory
