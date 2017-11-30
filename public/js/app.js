@@ -25,28 +25,27 @@ $(document).ready(function(){
 
 
 	//login modal input validation
-	$("#loginSubmit").on("click", function() {
+	$("#loginSubmit").on("click", function(event) {
 		event.preventDefault();
 
 	});
 
-	//sign up modal input validation
-	$("#signUpSubmit").on("click", function() {
+	// //sign up modal input validation
+	// $("#signUpSubmit").on("click", function() {
 
-		//grabs new user info and creates in users table of DB
-		var newUser = {
-			userName: $("#usernameSignUp").val().trim(),
-			password: $("#newPassword").val().trim(),
-			email: $("#passwordSignUp").val().trim()
-		}
-		console.log(newUser);
+	// 	//grabs new user info and creates in users table of DB
+	// 	var newUser = {
+	// 		userName: $("#usernameSignUp").val().trim(),
+	// 		password: $("#passwordSignUp").val().trim(),
+	// 		email: $("#emailSignUp").val().trim()
+	// 	}
+	// 	console.log(newUser);
 
-		$.ajax("/api/users", {
-			type: "POST",
-			data: newUser
-		}).then(function(data){
-			console.log("created new author with id: " + data.id);
-			window.location.href = "/home";
-		});
-	});
+	// 	$.ajax("/api/newuser", {
+	// 		type: "POST",
+	// 		data: newUser
+	// 	}).then(function(data){
+	// 		console.log(data);
+	// 	});
+	// });
 });

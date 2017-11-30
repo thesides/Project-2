@@ -33,7 +33,7 @@ app.get("/cms", function(req, res) {
 // Static directory
 app.use(express.static("public"));
 
-require("./routes/api-routes.js")(app);
+require("./routes/user-routes.js")(app);
 require("./routes/story-routes.js")(app);
 require("./routes/post-routes.js")(app);
 

@@ -14,14 +14,19 @@ module.exports = function (app) {
 	});
 	
 	//this creates a new user and password
+<<<<<<< HEAD:routes/user-routes.js
+	app.post("/api/newuser", function (req, res) {
+=======
 	app.post("/api/user", function (req, res) {
+>>>>>>> 417dfd6757b24d8fe86568e855ee2097f7592eaf:routes/api-routes.js
 		console.log(req.body);
 
 		db.User.create({
 			userName: req.body.name,
-			password: req.body.password
+			password: req.body.password,
+			email: req.body.email
 		}).then(function(data){
-			res.send();
+			res.render("loggedInUserView", data);
 		});
 	});
 }
