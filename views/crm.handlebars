@@ -40,22 +40,10 @@
 			<!-- Main Column -->
 			<div class="col s12 m8 l9">
 
-				<!-- Post Form -->
+				{{!-- <!-- Post Form -->
 				<div class="row">
 					<div class="col s12">
-						<form class="create-form" id="cms-post" action="/api/post" method="POST">
-							<!-- Selector Dropdown -->
-							<div class="row">
-							  <div class="input-field col s12" id="story-selector">
-							    <select>
-							      <option value="" disabled selected> Select A Story</option>
-							      <option value="1">Option 1</option>
-							      <option value="2">Option 2</option>
-							      <option value="3">Option 3</option>
-							    </select>
-							    <label for="story-selector">Select A Story:</label>
-							  </div> 
-							</div>  
+						<form class="create-form" id="cms-post" action="/api/post" method="POST"> 
 
 							<!-- Text Area -->
 							<div class="row">
@@ -74,7 +62,7 @@
 						</div>
 
 					</div>	
-				</div>
+				</div> --}}
 
 				<hr>
 
@@ -88,6 +76,16 @@
 							  <div class="input-field col s12">
 							  	<input id="newTitle" name="title" type="text" class="validate">
 	          					<label for="title">Title:</label>
+							  </div> 
+							</div>
+						</form>
+
+						<form class="create-form" id="firstPost" action="/api/post" method="POST">
+							<!-- Text Area -->
+							<div class="row">
+							  <div class="input-field col s12">
+							  	<input id="firstPost" name="title" type="text" class="validate">
+	          					<label for="title">First Post:</label>
 							  </div> 
 							</div>
 						</form> 
